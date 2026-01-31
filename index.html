@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockBuddy - Visual Coding</title>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-container" style="max-width: 900px; height: 90vh;">
+        <header>
+            <h1>BlockBuddy <span>Blocks</span></h1>
+        </header>
+
+        <div id="blocklyDiv" style="height: 400px; width: 100%; border-radius: 15px; overflow: hidden;"></div>
+
+        <div class="output-area" style="margin-top: 20px;">
+            <div class="output-header">
+                <span>Generated JavaScript:</span>
+                <button id="runCodeBtn" class="copy-btn" style="background: #22c55e !important; color: white !important;">Run Code</button>
+            </div>
+            <pre id="codePreview" style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; font-size: 12px; color: #38bdf8;"></pre>
+        </div>
+    </div>
+
+    <xml id="toolbox" style="display: none">
+        <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+        </category>
+        <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+            <block type="controls_repeat_ext"></block>
+        </category>
+        <category name="Text" colour="%{BKY_TEXT_HUE}">
+            <block type="text"></block>
+            <block type="text_print"></block>
+        </category>
+    </xml>
+
+    <script src="blockly-logic.js"></script>
+</body>
+</html>
