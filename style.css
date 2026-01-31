@@ -1,0 +1,15 @@
+/* Styl pro Blockly plochu */
+.blocklyTreeLabel {
+    color: white !important; /* Text v menu bloků */
+    font-family: 'Inter', sans-serif;
+}
+
+.blocklyToolboxDiv {
+    background-color: rgba(15, 23, 42, 0.8) !important; /* Tmavé menu */
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blocklyMainBackground {
+    stroke: none !important;
+    fill: rgba(0, 0, 0, 0.2) !important; /* Pozadí plochy */
+}
