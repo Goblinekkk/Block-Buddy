@@ -2,42 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BlockBuddy - Visual Coding</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" type="image/png" href="CodeBuddy-AI-Logo.png">
+    
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
     <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
     <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="glass-container" style="max-width: 900px; height: 90vh;">
+    <div class="glass-container blockly-main">
         <header>
+            <img src="CodeBuddy-AI-Logo.png" alt="Logo" class="main-logo" style="width: 50px;">
             <h1>BlockBuddy <span>Blocks</span></h1>
         </header>
 
-        <div id="blocklyDiv" style="height: 400px; width: 100%; border-radius: 15px; overflow: hidden;"></div>
+        <div id="blocklyDiv"></div>
 
-        <div class="output-area" style="margin-top: 20px;">
+        <div class="output-area">
             <div class="output-header">
                 <span>Generated JavaScript:</span>
-                <button id="runCodeBtn" class="copy-btn" style="background: #22c55e !important; color: white !important;">Run Code</button>
+                <button id="runCodeBtn" class="run-btn">Run Code</button>
             </div>
-            <pre id="codePreview" style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; font-size: 12px; color: #38bdf8;"></pre>
+            <pre id="codePreview">// Drag blocks to start coding...</pre>
         </div>
     </div>
 
     <xml id="toolbox" style="display: none">
-        <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <category name="Logic" colour="#5b80a5">
             <block type="controls_if"></block>
             <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
         </category>
-        <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-            <block type="controls_repeat_ext"></block>
+        <category name="Loops" colour="#5ba55b">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <shadow type="math_number"><field name="NUM">10</field></shadow>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_for"></block>
         </category>
-        <category name="Text" colour="%{BKY_TEXT_HUE}">
+        <category name="Math" colour="#5b67a5">
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+            <block type="math_single"></block>
+            <block type="math_random_int">
+                <value name="FROM"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+                <value name="TO"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+            </block>
+        </category>
+        <category name="Text" colour="#5ba58c">
             <block type="text"></block>
             <block type="text_print"></block>
+            <block type="text_join"></block>
+            <block type="text_length"></block>
+        </category>
+        <category name="Lists" colour="#745ba5">
+            <block type="lists_create_with"></block>
+            <block type="lists_repeat"></block>
+            <block type="lists_length"></block>
+        </category>
+        <category name="Variables" colour="#a55b80" custom="VARIABLE"></category>
+        <category name="Functions" colour="#995ba5" custom="PROCEDURE"></category>
+        <category name="Colour" colour="#a5a55b">
+            <block type="colour_picker"></block>
+            <block type="colour_random"></block>
         </category>
     </xml>
 
