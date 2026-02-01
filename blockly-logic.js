@@ -1,43 +1,41 @@
-// Initialize Blockly Workspace
+// Inicializace Blockly s lepším nastavením pro spojování
 const workspace = Blockly.inject('blocklyDiv', {
     toolbox: document.getElementById('toolbox'),
     grid: {
-        spacing: 20,
+        spacing: 25,
         length: 3,
         colour: '#334155',
-        snap: true
+        snap: true // Toto přitáhne blok k mřížce
+    },
+    move: {
+        scrollbars: true,
+        drag: true,
+        wheel: true
     },
     zoom: {
         controls: true,
         wheel: true,
-        startScale: 1.0,
-        maxScale: 3,
-        minScale: 0.3,
-        scaleSpeed: 1.2
+        startScale: 1.0
     },
     trashcan: true,
-    theme: Blockly.Themes.Dark
+    theme: Blockly.Themes.Dark,
+    renderer: 'zelos' // 'zelos' je styl, který vypadá přesně jako Scratch!
 });
 
-// Real-time code generation
-function updateCode(event) {
+// Funkce pro generování kódu
+function updateCode() {
     const code = Blockly.JavaScript.workspaceToCode(workspace);
-    const preview = document.getElementById('codePreview');
-    preview.textContent = code || "// Drag blocks to generate code...";
+    document.getElementById('codePreview').textContent = code || "// Přetáhni bloky pro kódování...";
 }
 
 workspace.addChangeListener(updateCode);
 
-// Execute the generated code
+// Spuštění kódu
 document.getElementById('runCodeBtn').addEventListener('click', () => {
     const code = Blockly.JavaScript.workspaceToCode(workspace);
     try {
-        // This runs the code in the browser
-        eval(code); 
+        eval(code);
     } catch (e) {
-        alert("Execution Error: " + e.message);
+        alert("Chyba v kódu: " + e.message);
     }
 });
-
-// Auto-resize workspace when window changes
-window.addEventListener('resize', () => Blockly.svgResize(workspace));
